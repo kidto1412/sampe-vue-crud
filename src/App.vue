@@ -52,6 +52,14 @@ const selectRow = (data: any) => {
   name.value = data.nama
   console.log(data)
 }
+const deleteUser = async (data: any) => {
+  const response = await api.delete(`siswa/${data.id}`)
+  getSiswa()
+}
+
+const edit = async (id: number) => {
+  const response = await api.get(`siswa/${id}`)
+}
 
 onMounted(() => {
   getSiswa()
@@ -100,7 +108,7 @@ const visible = ref<boolean>(false)
           ></Button>
           <Button
             icon="pi pi-search"
-            @click="selectRow(data)"
+            @click="deleteUser(data)"
             severity="warn"
             rounded
             label="delete"
